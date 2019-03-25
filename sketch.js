@@ -35,7 +35,7 @@ function setup() {
 }
 
 function draw() {
-	for (let i = 0; i < 500; i++) {
+	for (let i = 0; i < 200; i++) {
 		const maximum = mSlider.value();
 		stroke(255);
 		textSize(15);
