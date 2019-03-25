@@ -4,7 +4,7 @@
 // equals one: gcd(a, b) = 1; a and b are coprime.
 
 let pi = 0;
-let maximum = 200;
+let maximum = 0;
 let iterations = 1;
 let coprimes = 0;
 let update = pi;
@@ -30,32 +30,36 @@ function coprime(a, b) {
 
 function setup() {
 	createCanvas(400, 400);
-	stroke(255);
-	fill(255);
-	textSize(34);
-	textAlign(CENTER);
+
+	mSlider = createSlider(10, 1000, 200);
 }
 
 function draw() {
-	frameRate();
-	a = floor(random(1, maximum));
-	b = floor(random(1, maximum));
+	for (let i = 0; i < 500; i++) {
+		const maximum = mSlider.value();
+		stroke(255);
+		textSize(15);
+		text(maximum, mSlider.x * 2 + mSlider.width, 20);
+		a = floor(random(1, maximum));
+		b = floor(random(1, maximum));
 
-	coprime(a, b);
+		stroke(255);
+		fill(255);
+		textSize(34);
+		textAlign(CENTER);
+		coprime(a, b);
 
-	// x = 6/(pi^2)
-	let x = coprimes / iterations;
-	// pi = sqrt(6/x)
-	pi = sqrt(6 / x);
+		pi = sqrt(6 / (coprimes / iterations));
 
-	background(0);
-	text('Pi = '+ PI, width / 2, height / 4);
-	text('Zelf berekend: ', width / 2, height / 2.5);
-	text(pi, width / 2, height / 2);
+		background(0);
+		text('Pi = ' + PI, width / 2, height / 4);
+		text('Zelf berekend: ', width / 2, height / 2.5);
+		text(pi, width / 2, height / 2);
 
-	if (second() % 2) {
-		update = pi;
+		if (second() % 2) {
+			update = pi;
+		}
+		text(update, width / 2, 2 * height / 3);
+		iterations++;
 	}
-	text(update, width / 2, 2 * height / 3);
-	iterations++;
 }
