@@ -29,7 +29,7 @@ function coprime(a, b) {
 }
 
 function setup() {
-	createCanvas(400, 400);
+	createCanvas(windowWidth, windowHeight);
 
 	mSlider = createSlider(10, 1000, 200);
 }
